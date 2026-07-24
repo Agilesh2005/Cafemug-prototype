@@ -3187,34 +3187,20 @@
 
     /* ---------- MOBILE: HIDE NAV ON SCROLL DOWN, SHOW ON SCROLL UP ---------- */
     let lastScrollTop = 0;
-    let downScrollGestures = 0;
-    let inDownGesture = false;
-    let gesturePauseTimer = null;
     const isMobileNav = () => window.matchMedia('(max-width: 860px)').matches;
     const isOverlayOpen = () =>
       (typeof dishDetailSection !== 'undefined' && dishDetailSection && dishDetailSection.style.display === 'block') ||
       (typeof reviewDetailSection !== 'undefined' && reviewDetailSection && reviewDetailSection.style.display === 'block');
     scrollArea.addEventListener('scroll', () => {
-      if (!isMobileNav() || isOverlayOpen()) { nav.classList.remove('nav-hidden'); lastScrollTop = scrollArea.scrollTop; downScrollGestures = 0; inDownGesture = false; return; }
+      if (!isMobileNav() || isOverlayOpen()) { nav.classList.remove('nav-hidden'); lastScrollTop = scrollArea.scrollTop; return; }
       const current = scrollArea.scrollTop;
       const delta = current - lastScrollTop;
       if (current <= 20) {
         nav.classList.remove('nav-hidden');
-        downScrollGestures = 0;
-        inDownGesture = false;
-      } else if (delta > 8) {
-        clearTimeout(gesturePauseTimer);
-        gesturePauseTimer = setTimeout(() => { downScrollGestures = 0; inDownGesture = false; }, 400);
-        if (!inDownGesture) {
-          inDownGesture = true;
-          downScrollGestures += 1;
-          if (downScrollGestures >= 2) nav.classList.add('nav-hidden');
-        }
-      } else if (delta < -8) {
+      } else if (delta > 5) {
+        nav.classList.add('nav-hidden');
+      } else if (delta < -5) {
         nav.classList.remove('nav-hidden');
-        downScrollGestures = 0;
-        inDownGesture = false;
-        clearTimeout(gesturePauseTimer);
       }
       lastScrollTop = current;
     }, { passive: true });
