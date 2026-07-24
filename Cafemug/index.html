@@ -387,7 +387,7 @@
     #main-content {
       width: 100%;
       position: relative;
-      padding-top: 195px;
+      padding-top: 155px;
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
@@ -1052,10 +1052,10 @@
       padding: 60px 8% 80px;
     }
 
-    #reviewDetail { top: 195px; }
+    #reviewDetail { top: 195px; padding-top: 24px; }
 
     @media (max-width: 860px) {
-      #reviewDetail { top: 140px; }
+      #reviewDetail { top: 140px; padding-top: 20px; }
     }
 
     .dish-detail-back {
@@ -1784,8 +1784,13 @@
       .nav-links { flex-direction: row !important; justify-content: center !important; gap: 12px !important; }
       .nav-links a { font-size: 11.5px !important; letter-spacing: 0.02em !important; }
 
-      #main-content { padding-top: 175px !important; }
-      header.hero { scroll-margin-top: 148px !important; }
+      #main-content { padding-top: 148px !important; }
+      header.hero {
+        scroll-margin-top: 148px !important;
+        min-height: auto !important;
+        padding: 24px 6% 60px !important;
+        align-items: flex-start !important;
+      }
       section { scroll-margin-top: 148px !important; }
       #branches { scroll-margin-top: 175px !important; }
 
@@ -1859,6 +1864,9 @@
 
     .reviews-grid.single-branch .reviews-col[data-branch] { display: none; }
     .reviews-grid.single-branch .reviews-col.active-branch { display: block; }
+
+    .reviews-grid.single-branch .reviews-col-head h3 { display: none; }
+    .reviews-grid.single-branch .reviews-col-head { justify-content: center; }
 
     .reviews-col-head {
       display: flex;
@@ -3304,8 +3312,8 @@
     const reviewsGrid = document.getElementById('reviewsGrid');
 
     const BRANCH_LABELS = {
-      palladam: '📍 Palladam Road Reviews',
-      kangeyam: '📍 Kangeyam Road Reviews'
+      palladam: 'Palladam Road Reviews',
+      kangeyam: 'Kangeyam Road Reviews'
     };
 
     function openReviewDetail(branch) {
