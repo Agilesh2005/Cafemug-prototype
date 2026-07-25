@@ -14,7 +14,7 @@
     :root {
       --maroon-deep: #2D0B0D;
       --maroon: #4A1517;
-      --maroon-light: #7C262A;
+      --maroon-light: #6A2224;
       --gold: #E5A91A;
       --gold-soft: #F5D076;
       --gold-bright: #FFD873;
@@ -29,10 +29,6 @@
       --whatsapp: #08a040;
     }
 
-    body {
-      filter: brightness(1.03) saturate(1.55);
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -42,18 +38,14 @@
 
     html {
       scroll-behavior: smooth;
-      height: 100%;
-      overflow: hidden;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background: radial-gradient(circle at 20% 15%, var(--maroon-light), var(--maroon-deep) 65%) fixed;
       color: var(--cream);
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
-      height: 100%;
-      margin: 0;
     }
 
     nav,
@@ -133,10 +125,8 @@
       transition: height 1.2s cubic-bezier(0.77, 0, 0.175, 1), border-color 1.2s ease, top 0.3s ease;
     }
 
-    nav.scrolled {
-      height: 170px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    }
+    /* nav.scrolled / nav.nav-hidden intentionally no longer alter the nav —
+       it stays static in size and position at all times. */
 
     .brand-banner-link {
       position: relative;
@@ -150,9 +140,7 @@
       flex-shrink: 0;
     }
 
-    nav.scrolled .brand-banner-link {
-      height: 100px;
-    }
+
 
     .banner-watermark {
       position: absolute;
@@ -164,9 +152,7 @@
       transition: height 1.2s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
-    nav.scrolled .banner-watermark {
-      height: 144px;
-    }
+
 
     .banner-wordmark {
       position: relative;
@@ -387,12 +373,7 @@
     #main-content {
       width: 100%;
       position: relative;
-      padding-top: 155px;
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
+      padding-top: 195px;
     }
 
     header.hero {
@@ -402,7 +383,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      padding: 80px 8%;
+      padding: 20px 8% 70px;
       scroll-margin-top: 140px;
     }
 
@@ -593,12 +574,12 @@
     .action-time { font-size: 10px; color: var(--gold-soft); font-weight: 600; letter-spacing: 0.02em; }
 
     section {
-      padding: 60px 8% 60px;
+      padding: 40px 8% 60px;
       position: relative;
       scroll-margin-top: 140px;
     }
 
-    .section-head { text-align: center; max-width: 620px; margin: 0 auto 60px; }
+    .section-head { text-align: center; max-width: 620px; margin: 0 auto 36px; }
 
     .kicker {
       color: var(--gold);
@@ -738,7 +719,7 @@
 
     #branches {
       color: var(--cream);
-      padding: 60px 8% 120px;
+      padding: 40px 8% 60px;
       position: relative;
       border-top: 1px solid rgba(245, 183, 32, 0.15);
       border-bottom: 1px solid rgba(245, 183, 32, 0.15);
@@ -1050,12 +1031,6 @@
       background: radial-gradient(circle at 20% 15%, var(--maroon-light), var(--maroon-deep) 65%);
       z-index: 50;
       padding: 60px 8% 80px;
-    }
-
-    #reviewDetail { top: 195px; padding-top: 24px; }
-
-    @media (max-width: 860px) {
-      #reviewDetail { top: 140px; padding-top: 20px; }
     }
 
     .dish-detail-back {
@@ -1424,7 +1399,7 @@
 
     #franchise {
       border-top: 1px solid rgba(245, 183, 32, 0.15);
-      padding: 80px 8%;
+      padding: 40px 8%;
     }
 
     .franchise-container {
@@ -1737,10 +1712,8 @@
         padding: 0 !important;
         flex-direction: column !important;
         align-items: center !important;
-        transition: transform 0.35s ease !important;
+        transition: top 0.3s ease !important;
       }
-
-      nav.nav-hidden { transform: translateY(-100%); }
 
       nav.scrolled { height: 148px !important; }
 
@@ -1751,7 +1724,7 @@
       nav.scrolled .brand-banner-link { height: 80px !important; }
 
       .banner-watermark {
-        left: 8px !important;
+        left: -2px !important;
         top: 76% !important;
         height: 115px !important;
         transition: none !important;
@@ -1785,6 +1758,7 @@
       .nav-links a { font-size: 11.5px !important; letter-spacing: 0.02em !important; }
 
       #main-content { padding-top: 148px !important; }
+      header.hero { padding-top: 10px !important; }
       header.hero { scroll-margin-top: 148px !important; }
       section { scroll-margin-top: 148px !important; }
       #branches { scroll-margin-top: 175px !important; }
@@ -1824,10 +1798,6 @@
       .otp-box-group { gap: 4px; }
       .otp-box-group .otp-box { width: 30px; flex: 0 0 30px; height: auto; padding: 9px 0; font-size: 15px; }
       .otp-verify-row { row-gap: 10px; }
-
-      #branches { padding: 60px 5% 120px; }
-      .branches-grid { grid-template-columns: 1fr; gap: 28px; justify-items: center; }
-      .branch-card { width: 100%; max-width: 380px; padding: 32px 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1859,9 +1829,7 @@
 
     .reviews-grid.single-branch .reviews-col[data-branch] { display: none; }
     .reviews-grid.single-branch .reviews-col.active-branch { display: block; }
-
     .reviews-grid.single-branch .reviews-col-head h3 { display: none; }
-    .reviews-grid.single-branch .reviews-col-head { justify-content: center; }
 
     .reviews-col-head {
       display: flex;
@@ -2227,8 +2195,8 @@
                 </button>
                 <div class="order-branch-popover" id="swiggyOrderPopover">
                   <div class="order-branch-popover-title">Choose a Branch</div>
-                  <a href="https://www.swiggy.com/menu/477459?source=sharing" target="_blank" class="order-branch-item">📍 Palladam Road</a>
-                  <a href="https://www.swiggy.com/menu/477459?source=sharing" target="_blank" class="order-branch-item">📍 Kangeyam Road</a>
+                  <a href="https://www.swiggy.com/menu/477459?source=sharing" target="_blank" class="order-branch-item">Palladam Road</a>
+                  <a href="https://www.swiggy.com/menu/477459?source=sharing" target="_blank" class="order-branch-item">Kangeyam Road</a>
                 </div>
               </div>
 
@@ -2238,8 +2206,8 @@
                 </button>
                 <div class="order-branch-popover" id="zomatoOrderPopover">
                   <div class="order-branch-popover-title">Choose a Branch</div>
-                  <a href="https://www.zomato.com/tiruppur/cafe-mug-karuvampalayam/order" target="_blank" class="order-branch-item">📍 Palladam Road</a>
-                  <a href="https://www.zomato.com/tiruppur/cafe-mug-karuvampalayam/order" target="_blank" class="order-branch-item">📍 Kangeyam Road</a>
+                  <a href="https://www.zomato.com/tiruppur/cafe-mug-karuvampalayam/order" target="_blank" class="order-branch-item">Palladam Road</a>
+                  <a href="https://www.zomato.com/tiruppur/cafe-mug-karuvampalayam/order" target="_blank" class="order-branch-item">Kangeyam Road</a>
                 </div>
               </div>
             </div>
@@ -2248,12 +2216,12 @@
           <div class="action-group">
             <h4>Find Our Branches</h4>
             <div class="action-links">
-              <a href="#branches" class="action-link-item">
-                <span>📍 Palladam Road</span>
+              <a href="#branch-palladam" class="action-link-item">
+                <span>Palladam Road</span>
                 <span class="action-time">11 AM – 11 PM</span>
               </a>
-              <a href="#branches" class="action-link-item">
-                <span>📍 Kangeyam Road</span>
+              <a href="#branch-kangeyam" class="action-link-item">
+                <span>Kangeyam Road</span>
                 <span class="action-time">11 AM – 11 PM</span>
               </a>
             </div>
@@ -2291,7 +2259,7 @@
         </div>
         <div class="menu-card reveal" id="cappuccino-card">
           <div class="menu-photo">
-            <video id="cappuccino-video" src="Products/cappuccino 2.mp4" muted playsinline preload="none" poster="Products/cappuccino 2.jpg" alt="Cappuccino"></video>
+            <video id="cappuccino-video" src="Products/cappuccino 2 .mp4" muted playsinline preload="none" poster="Products/cappuccino 2.jpg" alt="Cappuccino"></video>
           </div>
           <div class="menu-body">
             <h3>Beverages</h3>
@@ -2453,7 +2421,7 @@
         <!-- PALLADAM ROAD COLUMN -->
         <div class="reviews-col" data-branch="palladam">
           <div class="reviews-col-head">
-            <h3>📍 Palladam Road</h3>
+            <h3>Palladam Road</h3>
             <div class="reviews-col-badge" data-rating="4.5">
               <span class="g-rating-num">4.5</span>
               <span class="col-stars"></span>
@@ -2565,7 +2533,7 @@
         <!-- KANGEYAM ROAD COLUMN -->
         <div class="reviews-col" data-branch="kangeyam">
           <div class="reviews-col-head">
-            <h3>📍 Kangeyam Road</h3>
+            <h3>Kangeyam Road</h3>
             <div class="reviews-col-badge" data-rating="4.6">
               <span class="g-rating-num">4.6</span>
               <span class="col-stars"></span>
@@ -2771,8 +2739,8 @@
       </div>
 
       <div class="branches-grid">
-        <div class="branch-item reveal">
-          <div class="branch-label">📍 Palladam Road</div>
+        <div class="branch-item reveal" id="branch-palladam">
+          <div class="branch-label">Palladam Road</div>
           <div class="branch-card">
             <div class="branch-photo">
               <img id="palladamBranchPhoto" src="Shop/palladam_day.jpg" data-day-src="Shop/palladam_day.jpg" data-night-src="Shop/palladam_night.jpg" alt="Cafemug Palladam Road branch" loading="lazy" decoding="async">
@@ -2814,8 +2782,8 @@
           </div>
         </div>
 
-        <div class="branch-item reveal">
-          <div class="branch-label">📍 Kangeyam Road</div>
+        <div class="branch-item reveal" id="branch-kangeyam">
+          <div class="branch-label">Kangeyam Road</div>
           <div class="branch-card">
             <div class="branch-photo">
               <img id="kangeyamBranchPhoto" src="Shop/kangeyam_day.jpg" data-day-src="Shop/kangeyam_day.jpg" data-night-src="Shop/kangeyam_night.jpg" alt="Cafemug Kangeyam Road branch" loading="lazy" decoding="async">
@@ -2950,6 +2918,7 @@
           </div>
         </form>
       </div>
+      <p style="text-align:center; margin-top: 24px; color: rgba(253,251,247,0.4); font-size: 12px;">test 1</p>
     </section>
 
     <!-- FOOTER -->
@@ -3096,12 +3065,12 @@
 
     function openMenuLightbox() {
       menuLightbox.classList.add('open');
-      document.body.style.overflow = 'hidden'; scrollArea.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
       pushOverlayHistoryState('menuLightbox');
     }
     function closeMenuLightbox(fromPopState) {
       menuLightbox.classList.remove('open');
-      document.body.style.overflow = ''; scrollArea.style.overflow = '';
+      document.body.style.overflow = '';
       if (!fromPopState) popOverlayHistoryState();
     }
     const dishDetailFullMenuBtn = document.getElementById('dishDetailFullMenu');
@@ -3130,13 +3099,19 @@
     });
 
     const COMPACT_NAV_HEIGHT = 140;
-    const EXTRA_SCROLL_DOWN = 40;
-    window.scrollArea = document.getElementById('main-content');
-    const scrollArea = window.scrollArea;
+    const EXTRA_SCROLL_DOWN = -20;
+    const SCROLL_NOTCH_PX = 20;
+    const SECTION_EXTRA_NOTCHES = { menu: 1, about: 1, branches: 1 };
+    let programmaticScrollUntil = 0;
 
     function scrollToInPageTarget(id) {
+      // Keep the nav pinned visible for the duration of this jump so it
+      // doesn't hide/reveal mid-animation and shift where we land.
+      nav.classList.remove('nav-hidden');
+      programmaticScrollUntil = Date.now() + 900;
+
       if (id === 'hero') {
-        scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
       const target = document.getElementById(id);
@@ -3152,8 +3127,10 @@
           storyItems.forEach(el => { storyIo.unobserve(el); storyIo.observe(el); });
         });
       }
-      const targetTop = target.getBoundingClientRect().top + scrollArea.scrollTop;
-      scrollArea.scrollTo({ top: Math.max(targetTop - COMPACT_NAV_HEIGHT + EXTRA_SCROLL_DOWN, 0), behavior: 'smooth' });
+      const notchKey = id.startsWith('branch-') ? 'branches' : id;
+      const extraNotches = SECTION_EXTRA_NOTCHES[notchKey] || 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: Math.max(targetTop - COMPACT_NAV_HEIGHT + EXTRA_SCROLL_DOWN + (extraNotches * SCROLL_NOTCH_PX), 0), behavior: 'smooth' });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -3176,39 +3153,8 @@
       });
     });
 
-    scrollArea.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', scrollArea.scrollTop > 40);
-    }, { passive: true });
-
-    /* ---------- MOBILE: HIDE NAV ON SCROLL DOWN, SHOW ON SCROLL UP ---------- */
-    let lastScrollTop = 0;
-    let accumulatedDelta = 0;
-    const isMobileNav = () => window.matchMedia('(max-width: 860px)').matches;
-    const isOverlayOpen = () =>
-      (typeof dishDetailSection !== 'undefined' && dishDetailSection && dishDetailSection.style.display === 'block') ||
-      (typeof reviewDetailSection !== 'undefined' && reviewDetailSection && reviewDetailSection.style.display === 'block');
-    scrollArea.addEventListener('scroll', () => {
-      if (!isMobileNav() || isOverlayOpen()) { nav.classList.remove('nav-hidden'); lastScrollTop = scrollArea.scrollTop; accumulatedDelta = 0; return; }
-      const current = scrollArea.scrollTop;
-      const delta = current - lastScrollTop;
-
-      if (current <= 20) {
-        nav.classList.remove('nav-hidden');
-        accumulatedDelta = 0;
-      } else if (delta > 0) {
-        // Scrolling down — accumulate until it crosses a small threshold,
-        // so we hide on real scroll motion without waiting for a second gesture.
-        accumulatedDelta = accumulatedDelta > 0 ? accumulatedDelta + delta : delta;
-        if (accumulatedDelta > 12) {
-          nav.classList.add('nav-hidden');
-        }
-      } else if (delta < 0) {
-        // Scrolling up — show immediately.
-        accumulatedDelta = accumulatedDelta < 0 ? accumulatedDelta + delta : delta;
-        nav.classList.remove('nav-hidden');
-      }
-      lastScrollTop = current;
-    }, { passive: true });
+    /* NAV IS NOW STATIC: it no longer shrinks, hides, or reacts to
+       scroll position at all. It always stays fixed in the same place. */
 
     const revealEls = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
@@ -3318,9 +3264,8 @@
       }
       reviewDetailSection.style.display = 'block';
       reviewDetailSection.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
       nav.classList.remove('nav-hidden');
-      nav.classList.remove('scrolled');
-      document.body.style.overflow = 'hidden'; scrollArea.style.overflow = 'hidden';
       pushOverlayHistoryState('reviewDetail');
       requestAnimationFrame(() => {
         document.querySelectorAll('#reviewDetail .review-card').forEach(el => {
@@ -3332,8 +3277,7 @@
 
     function closeReviewDetail(fromPopState) {
       reviewDetailSection.style.display = 'none';
-      document.body.style.overflow = ''; scrollArea.style.overflow = '';
-      nav.classList.toggle('scrolled', scrollArea.scrollTop > 40);
+      document.body.style.overflow = '';
       if (!fromPopState) popOverlayHistoryState();
     }
 
@@ -3454,13 +3398,14 @@
     // Fallback: if user scrolls to the very top or very bottom, force-sync
     // to the first/last section in case no observer entry is intersecting.
     const syncEdgeActiveLink = () => {
-      if (scrollArea.scrollTop < 10) {
+      const doc = document.documentElement;
+      if ((window.scrollY || doc.scrollTop) < 10) {
         setActiveLink(spySections[0]?.getAttribute('id') || 'hero');
-      } else if (scrollArea.scrollTop + scrollArea.clientHeight >= scrollArea.scrollHeight - 2) {
+      } else if (window.innerHeight + window.scrollY >= doc.scrollHeight - 2) {
         setActiveLink(spySections[spySections.length - 1]?.getAttribute('id'));
       }
     };
-    scrollArea.addEventListener('scroll', syncEdgeActiveLink, { passive: true });
+    window.addEventListener('scroll', syncEdgeActiveLink, { passive: true });
     window.addEventListener('DOMContentLoaded', syncEdgeActiveLink);
 
     /* ---------- OUR STORY TIMELINE ---------- */
@@ -3524,7 +3469,7 @@
       const offset = storyPathData.len * (1 - ratio);
       storyPathData.fg.style.strokeDashoffset = offset;
     }
-    scrollArea.addEventListener('scroll', onStoryScroll, { passive: true });
+    window.addEventListener('scroll', onStoryScroll, { passive: true });
     onStoryScroll();
 
     /* ---------- SQ. FT. QUICK-SELECT BUTTONS ---------- */
@@ -4004,8 +3949,8 @@ function forcedTypeFromLabel(label) {
     }
     dishDetailSection.style.display = 'block';
     dishDetailSection.scrollTop = 0;
-    nav.classList.remove('nav-hidden');
-    document.body.style.overflow = 'hidden'; window.scrollArea.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('nav').classList.remove('nav-hidden');
     pushOverlayHistoryState('dishDetail');
     return;
   }
@@ -4015,14 +3960,14 @@ function forcedTypeFromLabel(label) {
   dishDetailGrid.innerHTML = '<p class="dish-detail-empty">No dishes added under this category yet.</p>';
   dishDetailSection.style.display = 'block';
   dishDetailSection.scrollTop = 0;
-  nav.classList.remove('nav-hidden');
-  document.body.style.overflow = 'hidden'; window.scrollArea.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('nav').classList.remove('nav-hidden');
   pushOverlayHistoryState('dishDetail');
 }
 
     function closeDishDetail(fromPopState) {
       dishDetailSection.style.display = 'none';
-      document.body.style.overflow = ''; window.scrollArea.style.overflow = '';
+      document.body.style.overflow = '';
       if (!fromPopState) popOverlayHistoryState();
     }
 
